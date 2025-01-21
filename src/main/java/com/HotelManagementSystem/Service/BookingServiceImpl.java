@@ -59,7 +59,7 @@ public class BookingServiceImpl implements BookingService {
 			for (Room room : requiredrooms) {
 				booking.getRooms().add(room);
 				room.setBooking(booking);
-				roomRepository.updateRoomAvailStatus(room.getRoomId(), "occupied");
+				roomRepository.updateRoomAvailStatus( "occupied",room.getRoomId());
 			}
 		} else {
 			throw new RoomNotFoundException("sorry!we dont have enough rooms as per your request");
@@ -108,7 +108,7 @@ public class BookingServiceImpl implements BookingService {
 				for (Room room : requiredrooms) {
 					booking.getRooms().add(room);
 					room.setBooking(booking);
-					roomRepository.updateRoomAvailStatus(room.getRoomId(), "occupied");
+					roomRepository.updateRoomAvailStatus("occupied",room.getRoomId());
 				}
 			} else {
 				throw new RoomNotFoundException("sorry!we dont have enough rooms as per your request");
@@ -137,7 +137,7 @@ public class BookingServiceImpl implements BookingService {
 	List<Room> rooms=	bookingRepository.findByBookingId(id);
 	
 	for (Room room : rooms) {
-		roomRepository.updateRoomAvailStatus(room.getRoomId(), "available");
+		roomRepository.updateRoomAvailStatus("available",room.getRoomId());
 		
 	}
 		bookingRepository.deleteById(id);

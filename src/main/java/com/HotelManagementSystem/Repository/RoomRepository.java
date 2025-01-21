@@ -15,8 +15,9 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
 
 	List<Room> findByRoomTypeAndRoomAvailStatus(String rt,String status);
 	Room findByRoomNumber(int roomnumber);
-	@Modifying
 	@Transactional
-	 @Query("UPDATE room_table rt SET rt.room_avail_status = :status WHERE rt.room_id =:id")     
-	void updateRoomAvailStatus(int id,String status);
+	@Modifying
+	 @Query(value="UPDATE room r SET r.room_avail_status=? WHERE r.room_id=?",nativeQuery = true)
+	//@Query("UPDATE Room r SET r.roomAvailStatus = :status WHERE r.roomId =:id")     
+	void updateRoomAvailStatus(String status,int id);
 }
