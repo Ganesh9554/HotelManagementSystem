@@ -43,6 +43,8 @@ public class BookingServiceImpl implements BookingService {
 		List<Room> requiredrooms =new ArrayList<Room>();
 
 		Optional<Customer> customer = customerRepository.findByCustomerName(booking.getCustomerName());
+		String name=customer.get().getCustomerName();
+		System.out.println(name);
 		Hotel hotel = hotelRepository.findByHotelName(booking.getHotelName());
 		List<Room> nofrooms = hotel.getRooms();
 		List<Room> filteredrooms = nofrooms.stream()
