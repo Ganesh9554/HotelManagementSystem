@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.HotelManagementSystem.Model.Booking;
 import com.HotelManagementSystem.Model.Hotel;
 import com.HotelManagementSystem.Model.Room;
 import com.HotelManagementSystem.Repository.HotelRepository;
@@ -20,6 +21,7 @@ public class HotelServiceImpl implements HotelService {
 	@Override
 	public int saveHotel(Hotel hotel) {
 		hotel.setRooms(new ArrayList<Room>());
+		hotel.setBooking(new ArrayList<Booking>());
 		return hotelRepository.save(hotel).getHotelId();
 	}
 

@@ -1,5 +1,8 @@
 package com.HotelManagementSystem.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -21,7 +24,8 @@ public class Customer {
 	private String customerEmail;
 	private long cPhoneNumber;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
 	@JoinColumn(name="booking_id_fk")
 	private Booking booking;
      

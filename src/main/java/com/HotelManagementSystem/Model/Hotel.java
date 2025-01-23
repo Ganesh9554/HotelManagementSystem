@@ -28,8 +28,8 @@ public class Hotel {
 	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
 	private List<Room> rooms;
 	
-	
-	private Booking booking;
+	@OneToMany(cascade =CascadeType.ALL )
+	private List<Booking> booking;
 	
 	
 	

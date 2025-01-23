@@ -70,10 +70,11 @@ public class BookingServiceImpl implements BookingService {
 			roomnumbers.add(room.getRoomNumber());
 			totalprice = roomService.calculateTotalPrice(room.getDayPrice(), numberofrooms);
 		}
+		System.out.println(totalprice);
         customer.get(). setBooking(booking);
 		booking.setCustomer(customer.get());
 		booking.setHotel(hotel);
-		hotel.setBooking(booking);
+		hotel.getBooking().add(booking) ; 
 
 		bookingRepository.save(booking);
 		BookingResponse br = new BookingResponse(booking.getBookingId(), hotel.getHotelName(),
@@ -123,7 +124,7 @@ public class BookingServiceImpl implements BookingService {
 			booking.setCustomer(customer.get());
 			booking.setRooms(filteredrooms);
 			booking.setHotel(hotel);
-			hotel.setBooking(booking);
+			hotel.getBooking().add(booking);
 
 			bookingRepository.save(booking);
 
