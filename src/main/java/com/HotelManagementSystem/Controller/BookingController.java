@@ -39,7 +39,7 @@ public class BookingController {
 	@PostMapping("/savebooking")
 	public ResponseEntity<BookingResponse> bookHotel(@RequestBody Booking booking) 
 			throws RoomNotFoundException,  CustomerNotFoundException{
-		log.debug("bookHotel :: Booking: {}", booking);
+		log.debug("Begin: bookHotel :: Booking: {}", booking);
 		BookingResponse br=null;
 		String cname=booking.getCustomerName();
 		Optional<Customer> customer=customerRepository.findByCustomerName(cname);
