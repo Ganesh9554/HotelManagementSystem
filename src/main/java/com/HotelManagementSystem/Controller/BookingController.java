@@ -22,6 +22,10 @@ import com.HotelManagementSystem.Model.Customer;
 import com.HotelManagementSystem.Repository.CustomerRepository;
 import com.HotelManagementSystem.Service.BookingService;
 
+import lombok.extern.slf4j.Slf4j;
+import lombok.extern.slf4j.XSlf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/booking")
 public class BookingController {
@@ -35,6 +39,7 @@ public class BookingController {
 	@PostMapping("/savebooking")
 	public ResponseEntity<BookingResponse> bookHotel(@RequestBody Booking booking) 
 			throws RoomNotFoundException,  CustomerNotFoundException{
+		log.debug("bookHotel :: Booking: {}", booking);
 		BookingResponse br=null;
 		String cname=booking.getCustomerName();
 		Optional<Customer> customer=customerRepository.findByCustomerName(cname);
